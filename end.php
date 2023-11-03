@@ -1,7 +1,16 @@
 <?php
-	include "header.php";
+	session_start(); //abrimos sesion
+	//valido que el formulario en el front este completamente rellenado con los datos
+	if(!empty($_POST["nombre"]) && !empty($_POST["apellido"]) && !empty($_POST["apellido2"]) && !empty
+        ($_POST["edad"]) ){
+        $_SESSION["nombre"]=$_POST["nombre"];
+       	$_SESSION["apellido"]=$_POST["apellido"];
+		$_SESSION["apellido2"]=$_POST["apellido2"];
+		$_SESSION["edad"]=$_POST["edad"];
+    }
+		include "header.php";
 ?>
-<script src="js/script.js"></script>
+<script src="vista/js/script.js"></script>
 <body>
 <div class="caja-negra">
 	<div class="numeros">
@@ -24,5 +33,5 @@
 		<h3>¡Gracias por dejarnos ser tu banco!</h3>
 	</div>
 	<hr>
-	<a href="index.php" class="boton">Finalizar</a>
+	<a href="modelo/Cliente.php" class="boton">Finalizar</a>
 </div>

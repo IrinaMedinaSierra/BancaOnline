@@ -1,7 +1,26 @@
 <?php
+    session_start(); //abrimos sesion
+    //valido que el formulario en el front este completamente rellenado con los datos
+    if(!empty($_POST["dni"]) && !empty($_POST["movil"]) && !empty($_POST["email"]) && !empty($_POST["email2"])) {
+	    //validamos que los email son iguales
+	    if ($_POST["email"] == $_POST["email2"]) {
+		    //leer en variables de sesion los datos insertados
+		    $_SESSION["dni"] = $_POST["dni"];
+            echo $_SESSION["dni"];
+		    $_SESSION["movil"] = $_POST["movil"];
+		    $_SESSION["email"] = $_POST["email"];
+
+	    } else {
+		    header("Location:http://localhost:63342/SeptimoPHP/index.php?mensaje=Los email deben ser iguales");
+	    }
+    }
+        else{
+	        header("Location:http://localhost:63342/SeptimoPHP/index.php?mensaje=Alguno de los campos estan sin completar");
+        }
+
 	include "header.php";
 	?>
-		<script src="js/script.js"></script>
+		<script src="vista/js/script.js"></script>
 	<body>
 	    <div class="caja-negra">
 	        <div class="numeros">

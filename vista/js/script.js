@@ -10,7 +10,6 @@ window.addEventListener("load",()=> {
                 validarVacio();
             } else {
                 elem.setAttribute("disabled", "disabled");
-
             }
         });
     }else{
@@ -26,8 +25,8 @@ function validarVacio() {
             if (!form.checkValidity()) {
                 event.preventDefault();
                 event.stopPropagation();
-
             }
         })
     })
+
 }

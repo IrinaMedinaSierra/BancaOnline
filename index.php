@@ -1,7 +1,8 @@
 <?php
+    session_start();
     include "header.php";
     ?>
-<script src="js/script.js"></script>
+
 <body>
     <div class="caja-negra">
         <div class="numeros">
@@ -44,7 +45,7 @@
                     </a>
                 </p>
                 <p class="centrado">
-                <input type="submit"  class="boton entrada" disabled name="enviar" value="Siguiente" id="enviar">
+                <input type="submit" disabled class="boton entrada"  name="enviar" value="Siguiente" id="enviar">
                     <input type="reset" class="boton" value="Limpiar">
                 </p>
             </div>

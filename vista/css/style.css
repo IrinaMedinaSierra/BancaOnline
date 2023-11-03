@@ -109,7 +109,10 @@ html {
 }
  .formulario input[type="text"],
  .formulario input[type="email"],
- .formulario input[type="number"]{
+ .formulario input[type="number"],
+ .formulario input[type="password"],
+ .login input
+ {
     font-size: 14px;
     border: none;
     border-bottom: 0.5px solid  #45BDA4 ;
@@ -117,6 +120,11 @@ html {
     width: 100%;
     margin-top:30px;
 }
+.login input
+{
+        text-align: center;
+}
+
  .centrado{
      padding-top: 25px;
      text-align: center !important;
@@ -158,4 +166,8 @@ html {
 hr{
     height: 50px;
     border: none;
+}
+.login{
+      width: 25% !important;
+      margin: 0 auto !important;
 }
