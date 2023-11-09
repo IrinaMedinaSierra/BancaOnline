@@ -8,6 +8,7 @@
 	</div>
 <div class="caja-blanca">
 	<form id="login" method="post" class="login" action="alta.php" novalidate>
+        <input type="text" name="nombre" placeholder="Nombre y Apellido"  required>
 		<input type="email" name="usuario" placeholder="Email"  required>
         <input type="password" name="pass" placeholder="Contraseña" required>
 
