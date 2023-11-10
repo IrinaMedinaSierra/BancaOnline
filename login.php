@@ -12,6 +12,14 @@
 		<input type="password" name="pass" placeholder="Contraseña" required>
 		<input type="submit" value="Entrar" class="boton entrada">
 	</form>
+    <p>Si no tiene usuario puede registrarse
+    <a href="registro.php" title="Registro de usuario">Aqui</a>
+    </p>
+    <?php
+        if(isset($_GET["mensaje"])){
+            echo "<p class='error'>".$_GET['mensaje']."</p>";
+        }
+    ?>
 </div>
 </body>
 </html>
