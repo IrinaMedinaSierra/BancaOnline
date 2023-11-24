@@ -8,9 +8,9 @@
 		global $servidor,$user,$pass,$bbdd;
 		$link=mysqli_connect($servidor,$user,$pass,$bbdd);
 		if (mysqli_error($link)){
-			echo "Existe un error al conectar con el servidor o BBDD";
+			$mensaje= "Existe un error al conectar con el servidor o BBDD";
 		}else{
-			echo "Conexión establecida correctamente";
+			$mensaje= "Conexión establecida correctamente";
 		}
 		return $link;
 	}
