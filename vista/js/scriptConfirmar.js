@@ -16,6 +16,7 @@ function confirmar() {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location="../eliminar.php"
-            });
+            window.location = "../eliminar.php"
+        }
+    });
         }
