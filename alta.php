@@ -7,42 +7,45 @@
 		$usuario = $_POST["usuario"];
 		$pass = $_POST["pass"];
 		$paso=true;
-		if (validarEmail($usuario)) {
-			echo "Email validado correctamente";
-		} else {
-			echo "Email en formato incorrecto";
+		$mesaje="";
+		if (!validarEmail($usuario)) {
+			$mensaje= "Email en formato incorrecto";
 			$paso=false;
 		}
-		if (validarPass($pass)) {
-			echo "El password cumple los requisitos de complejidad";
-		} else {
-			echo "El password NOO cumple los requisitos de complejidad";
+		if (!validarPass($pass)) {
+			$mensaje=$mensaje."<br>El password NOO cumple los requisitos de complejidad";
 			$paso=false;
 		}
 		//funcion que se llama para buscar si existe el email en la bbdd
 		if (!validarEmailBBDD($usuario)){
-			echo "Error: El email ya existe";
+			$mensaje=$mensaje."<br> Error: El email ya existe";
 			$paso=false;
-		}else{
-			$paso=true; //
 		}
 
 	//funcion  que guarda el registro cuando todo es correcto en la bbdd
 		if ($paso){
 			$passSeguro=password_hash($pass,PASSWORD_BCRYPT);
-			echo "<br>".$passSeguro;
+		//	echo "<br>".$passSeguro;
 			$insertarUser="insert into usuarios (email,pass,nombre) values 
             ('".$usuario."','".$passSeguro."','".$nombre."');";
-			echo "<br>$insertarUser";
+		//	echo "<br>$insertarUser";
 			$result=mysqli_query($link,$insertarUser);
 			if ($result) {
-				echo "Alta realizada correctamente";
+				$mensaje= "Alta realizada correctamente, pueden entrar al Sistema";
+				header("Location:http://localhost:63342/SeptimoPHP/login.php?mensaje=$mensaje");
 			}
 				else {
-					echo "Existe un error al relizar el alta";
+					$mensaje = "Existe un error al relizar el alta";
+					header("Location:http://localhost:63342/SeptimoPHP/registro.php?mensaje=$mensaje");
 				}
 				mysqli_close($link); //cerrar la bbdd
+		}else{
+			header("Location:http://localhost:63342/SeptimoPHP/registro.php?mensaje=$mensaje");
 		}
+
+	}else{
+		$mensaje="Todos los campos son resqueridos";
+		header("Location:http://localhost:63342/SeptimoPHP/registro.php?mensaje=$mensaje");
 	}
 	function validarEmail($email)
 	{

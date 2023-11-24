@@ -21,7 +21,8 @@
 		<input type="email" name="email" placeholder="Email"  required>
 		<input type="password" name="pass" placeholder="Contraseña" required>
 		<input type="password" name="pass2" placeholder="Repetir Contraseña">
-	<input type="submit" class="boton entrada"  value="Cambiar">
+	    <input type="submit" class="boton entrada"  value="Cambiar">
+        <input type="button" class="boton entrada" onclick="history.back()" value="Cancelar">
 	</form>
     <h4>Las contraseñas deben cumplir los siguientes criterios:</h4>
     <ul class="lista">
@@ -67,10 +68,10 @@
                 $resultadoUpd=mysqli_query($link,$actualizar);
                 if ($resultadoUpd){
                   $mensaje="Registro actualizado correctamente";
-                    //  echo "<br>Registro actualizado correctamente";
-
-                }else{
-                    $mensaje="Error al actulizar password";
+	                header("Location:http://localhost:63342/SeptimoPHP/dashboard.php?mensaje=$mensaje");
+                    exit();
+                    }else{
+                    $mensaje="Error al actualizar password";
                  //   echo "<br>Error al actulizar password";
                 }
             }

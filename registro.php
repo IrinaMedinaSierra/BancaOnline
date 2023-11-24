@@ -22,7 +22,11 @@
         <li>Al menos un número</li>
 
     </ul>
-
+	<?php
+		if(isset($_GET["mensaje"])){
+			echo "<p class='error'>".$_GET['mensaje']."</p>";
+		}
+	?>
 
 </div>
 </body>

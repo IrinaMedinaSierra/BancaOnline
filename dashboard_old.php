@@ -6,7 +6,7 @@
 	}
     include "header.php";
 	// Configuración de la paginación
-	$resultados_por_pagina = 10; // Número de resultados por página
+	$resultados_por_pagina = 15; // Número de resultados por página
 	$pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1; // Página actual, por defecto es la primera página
 
 	// Calcular el índice de inicio
@@ -77,10 +77,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css
         <?php
             include "modelo/conexion.php";
             $link=conectar();
-	        $consulta = "SELECT * FROM cliente LIMIT $indice_inicio,$resultados_por_pagina";
-	        $resultado= mysqli_query($link,$consulta);
-
-	        while ($row = mysqli_fetch_assoc($resultado)) {
+            $consulta="select * from cliente;";
+            $resultado=mysqli_query($link,$consulta);
+            while ($row=mysqli_fetch_assoc($resultado)){
                 echo "<tr>
                 <td>".$row['id']."</td>
                 <td>".$row['nombre']."</td>
@@ -106,21 +105,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css
         ?>
 
     </table>
-</div>
-<div class="paginacion">
-    <?php
-	    $consulta_total = "SELECT count(*) AS numrows FROM cliente ";
-	    $resultado = mysqli_query($link,$consulta_total);
-	    if ($row= mysqli_fetch_array($resultado)){
-            $numrows = $row['numrows'];}
-	    $total_pages = ceil($numrows/$resultados_por_pagina);
-	    echo "<div class='paginacion'>";
 
-	    for ($i = 1; $i <= $total_pages; $i++) {
-		    echo "<a href='dashboardConPag.php?pagina=$i'>$i</a> ";
-	    }
-	    echo "</div>";
-    ?>
+
+
 </div>
 </body>
 </html>
